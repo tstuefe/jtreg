@@ -373,6 +373,9 @@ If the tag is not present and no default value has been configured,
 a value of <code>false</code> will be assumed and no additional
 compile-time and run-time options will be provided.
 
+<p>If a test uses any libraries that use preview features,
+the test will be assumed to also use preview features.
+
 <p>There is no requirement to use <code>@enablePreview</code>.
 A test can still explicitly provide the necessary options instead.
 
@@ -605,6 +608,12 @@ considered to be finished when the main method returns; if a test involves
 multiple threads, some synchronization may be necessary to ensure that the
 other threads finish their work before the thread running the main method
 returns.
+
+<p>Sometimes, after the main method has been invoked, the code may determine
+that it cannot execute the test as required, and as such, the test should not
+be considered to have either passed or failed. In this situation, the test may
+throw an exception named `jtreg.SkippedException`, optionally providing
+a detail string to indicate why the test has been skipped.
 
 <p>The named <var>&lt;class&gt;</var> will be compiled on demand, just as though an "<code>@run</code> build
 <var>&lt;class&gt;</var>" action had been inserted before this action.  If this action requires
@@ -881,7 +890,7 @@ of a test-source tree must therefore be identified by placing a file named
 TEST.ROOT in the root directory.  Exactly one such file must exist in every
 test-source tree.
 
-
+<h3 id="TEST_ROOT_PROPERTIES">TEST.ROOT and TEST.properties</h3>
 
 <p>The <span id="TEST_ROOT">TEST.ROOT</span> file contains test-suite configuration
 information. It is in the standard Java property-file format as described in the

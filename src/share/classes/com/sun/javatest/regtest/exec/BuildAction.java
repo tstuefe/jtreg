@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 1998, 2022, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1998, 2025, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -224,7 +224,7 @@ public class BuildAction extends Action
 
             // compile libraries first
             for (Map.Entry<LibLocn,List<ClassLocn>> e: classLocnsToCompile.entrySet()) {
-                if (e.getKey().name != null) {
+                if (e.getKey().isLibrary()) {
                     Status s = compileLibrary(e.getKey(), e.getValue());
                     if (!s.isPassed()) {
                         status = s;
@@ -236,7 +236,7 @@ public class BuildAction extends Action
             // compile test code
             if (status == null) {
                 for (Map.Entry<LibLocn,List<ClassLocn>> e: classLocnsToCompile.entrySet()) {
-                    if (e.getKey().name == null) {
+                    if (e.getKey().isTest()) {
                         Status s = compileLibrary(e.getKey(), e.getValue());
                         if (!s.isPassed()) {
                             status = s;
@@ -319,7 +319,7 @@ public class BuildAction extends Action
     private void showClasses(LibLocn lib, List<ClassLocn> toCompile) {
         PrintWriter pw = section.getMessageWriter();
 
-        if (lib.name == null) {
+        if (lib.isTest()) {
             pw.println("Test directory:");
         } else {
             pw.println("Library " + lib.name + ":");

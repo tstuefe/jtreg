@@ -1,14 +1,50 @@
-## [Unreleased](https://git.openjdk.org/jtreg/compare/jtreg-7.4+1...master)
+## [Unreleased](https://git.openjdk.org/jtreg/compare/jtreg-7.5.1+1...master)
 
 _nothing noteworthy, yet_
 
+## [7.5.1](https://git.openjdk.org/jtreg/compare/jtreg-7.5+1...jtreg-7.5.1+1)
+
+* Support running individual parameterized tests and @Nested test classes [CODETOOLS-7903930](https://bugs.openjdk.org/browse/CODETOOLS-7903930)
+
+* Remove problematic implementation for `LIBRARY.properties` support [CODETOOLS-7903940](https://bugs.openjdk.org/browse/CODETOOLS-7903940)
+
+* Add `test.thread.factory` property to filter tests based on test thread factory value [CODETOOLS-7903931](https://bugs.openjdk.org/browse/CODETOOLS-7903931)
+
+* Fix and improve `--verify-exclude` feature
+  [CODETOOLS-7903883](https://bugs.openjdk.org/browse/CODETOOLS-7903883)
+  [CODETOOLS-7903935](https://bugs.openjdk.org/browse/CODETOOLS-7903935)
+
+## [7.5](https://git.openjdk.org/jtreg/compare/jtreg-7.4+1...jtreg-7.5+1)
+
+* Restore `jtdiff` tool [CODETOOLS-7903760](https://bugs.openjdk.org/browse/CODETOOLS-7903760)
+
+* Add support for `LIBRARY.properties` file in the directory specified in the `@library` tag  [CODETOOLS-7903775](https://bugs.openjdk.org/browse/CODETOOLS-7903775)
+
+* The verbose option given at the command-line is now propagated to test agents, including the JUnit test runner.
+  [CODETOOLS-7903443](https://bugs.openjdk.org/browse/CODETOOLS-7903443)
+  [CODETOOLS-7903745](https://bugs.openjdk.org/browse/CODETOOLS-7903745)
+
+* Report test duration information in JUnit and TestNG-based tests
+  [CODETOOLS-7903752](https://bugs.openjdk.org/browse/CODETOOLS-7903752)
+  [CODETOOLS-7903753](https://bugs.openjdk.org/browse/CODETOOLS-7903753)
+
+* Improve message when test times out in Agent VM mode [CODETOOLS-7902346](https://bugs.openjdk.org/browse/CODETOOLS-7902346)
+
+* Log time spent waiting to acquire exclusive access lock [CODETOOLS-7903188](https://bugs.openjdk.org/browse/CODETOOLS-7903188)
+
+* Speed-up error reporting on hosts with slow hostname lookups [CODETOOLS-7903746](https://bugs.openjdk.org/browse/CODETOOLS-7903746)
+
+* Updated jtreg to bundle JUnit 5.11.0 [CODETOOLS-7903821](https://bugs.openjdk.org/browse/CODETOOLS-7903821)
+
 ## [7.4](https://git.openjdk.org/jtreg/compare/jtreg-7.3.1+1...jtreg-7.4+1)
+
+* Remove support for `jtdiff` [CODETOOLS-7903622](https://bugs.openjdk.org/browse/CODETOOLS-7903622)
 
 * jtreg now verifies ProblemList files [CODETOOLS-7903659](https://bugs.openjdk.org/browse/CODETOOLS-7903659)
 
 * jtreg no longer ignores VM exit code when test process reports status with "STATUS: " line [CODETOOLS-7903621](https://bugs.openjdk.org/browse/CODETOOLS-7903621)
 
-* Use SOURCE_BUILD_EPOCH to suppport reproducible builds
+* Use SOURCE_BUILD_EPOCH to support reproducible builds
   [CODETOOLS-7903539](https://bugs.openjdk.org/browse/CODETOOLS-7903539)
 
 * Updated jtreg to bundle JUnit 5.10.2 [CODETOOLS-7903578](https://bugs.openjdk.org/browse/CODETOOLS-7903578)

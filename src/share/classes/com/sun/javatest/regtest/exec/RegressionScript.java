@@ -128,14 +128,7 @@ public class RegressionScript extends Script {
         // defaults
 
         testResult = getTestResult();
-
-        String hostname;
-        try {
-            hostname = InetAddress.getLocalHost().getCanonicalHostName();
-        } catch (UnknownHostException e) {
-            hostname = "127.0.0.1";
-        }
-        testResult.putProperty("hostname", hostname);
+        testResult.putProperty("hostname", regEnv.getHostName());
         String[] props = { "user.name" };
         for (String p: props) {
             testResult.putProperty(p, System.getProperty(p));
@@ -449,6 +442,11 @@ public class RegressionScript extends Script {
     boolean enablePreview() {
         String ep = td.getParameter("enablePreview");
         return ep != null && ep.equals("true");
+    }
+
+    boolean disablePreview() {
+        String ep = td.getParameter("enablePreview");
+        return ep != null && ep.equals("false");
     }
 
     private List<String> processArgs(List<String> args, Expr.Context c, Map<String,String> testProps)
@@ -788,7 +786,7 @@ public class RegressionScript extends Script {
         SearchPath sp = new SearchPath();
 
         // Test:
-        if (libLocn == null || libLocn.name == null) {
+        if (libLocn == null || libLocn.isTest()) {
             if (multiModule) {
                 msp.append(locations.absTestSrcDir());
             } else {
@@ -1058,15 +1056,8 @@ public class RegressionScript extends Script {
         return SummaryReporter.forJUnit(workDir);
     }
 
-    Lock getLockIfRequired() throws TestRunException {
-        try {
-            if (!testSuite.needsExclusiveAccess(td))
-                return null;
-        } catch (TestSuite.Fault e) {
-            throw new TestRunException("Can't determine if lock required", e);
-        }
-
-        return Lock.get(params);
+    Lock getLockIfRequired() {
+        return testSuite.needsExclusiveAccess(td) ? Lock.get(params) : null;
     }
 
     int getNextSerial() {
@@ -1173,6 +1164,9 @@ public class RegressionScript extends Script {
         }
         if (enablePreview()) {
             p.put("test.enable.preview", "true");
+        }
+        if (disablePreview()) {
+            p.put("test.enable.preview", "false");
         }
         p.put("test.root", getTestRootDir().getPath());
         return Collections.unmodifiableMap(p);

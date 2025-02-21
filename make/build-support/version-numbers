@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2020, 2023, Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2020, 2025, Oracle and/or its affiliates. All rights reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 #
 # This code is free software; you can redistribute it and/or modify it
@@ -23,7 +23,7 @@
 # questions.
 #
 
-JTREG_VERSION=7.5
+JTREG_VERSION=7.6
 
 DEFAULT_ANT_VERSION=1.10.8
 DEFAULT_ANT_ARCHIVE_CHECKSUM=dbe187ce2963f9df8a67de8aaff3b0a437d06978
@@ -42,8 +42,8 @@ DEFAULT_JTHARNESS_SRC_TAG=jt6.0-b24
 DEFAULT_JTHARNESS_SRC_ARCHIVE_CHECKSUM=3d25ddea8e59ab8ff0943bc65aebc80a2aecc4a3
 
 # JUnit 5 = JUnit Platform 1.y.z + JUnit Jupiter 5.y.z + JUnit Vintage 5.y.z
-DEFAULT_JUNIT_VERSION=1.10.2
-DEFAULT_JUNIT_JAR_CHECKSUM=552303cce67dc3485ded393d744c0f6b5cae355b
+DEFAULT_JUNIT_VERSION=1.11.0
+DEFAULT_JUNIT_JAR_CHECKSUM=48e1cc4ff5426f8a0148466e86c0df6cb1fc4d9d
 DEFAULT_JUNIT_LICENSE_FILE=LICENSE-junit.txt
 
 DEFAULT_TESTNG_VERSION=7.3.0
